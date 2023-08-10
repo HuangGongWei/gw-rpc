@@ -39,21 +39,7 @@ public class RpcServiceProxy {
     public static <T> T getProxyService(Class<T> serviceClass) {
         ClassLoader loader = serviceClass.getClassLoader();
         Class<?>[] interfaces = new Class[]{serviceClass};
-        Object obj = Proxy.newProxyInstance(loader, interfaces, (proxy, method, args) -> {
-            // 1. 将方法调用转换为 消息对象
-            int sequenceId = SequenceIdGenerator.nextId();
-            RpcRequestMessage msg = new RpcRequestMessage(
-                    sequenceId,
-                    serviceClass.getName(),
-                    method.getName(),
-                    method.getReturnType(),
-                    method.getParameterTypes(),
-                    args
-            );
-            // 2. 将消息对象发送出去
-            RpcClient.getChannel().writeAndFlush(msg);
-            return null;
-        });
+        Object obj = Proxy.newProxyInstance(loader, interfaces, new RpcServiceProxyInvocationHandler(serviceClass));
         return (T) obj;
     }
 
