@@ -22,6 +22,11 @@ public class Config {
             throw new ExceptionInInitializerError(e);
         }
     }
+
+    /**
+     * 获取端口号
+     * @return 端口号
+     */
     public static int getServerPort() {
         String value = properties.getProperty("server.port");
         if(value == null) {
@@ -30,6 +35,11 @@ public class Config {
             return Integer.parseInt(value);
         }
     }
+
+    /**
+     * 获取序列化方式
+     * @return 序列化方式枚举
+     */
     public static Serializer.Algorithm getSerializerAlgorithm() {
         String value = properties.getProperty("serializer.algorithm");
         if(value == null) {
