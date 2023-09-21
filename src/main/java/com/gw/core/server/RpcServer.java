@@ -1,5 +1,6 @@
 package com.gw.core.server;
 
+import com.gw.core.config.Config;
 import com.gw.core.protocol.MessageCodecSharable;
 import com.gw.core.protocol.ProtocolFrameDecoder;
 import com.gw.core.server.handler.RpcRequestMessageHandler;
@@ -41,7 +42,7 @@ public class RpcServer {
                     ch.pipeline().addLast(RPC_HANDLER);
                 }
             });
-            Channel channel = serverBootstrap.bind(8080).sync().channel();
+            Channel channel = serverBootstrap.bind(Config.getServerPort()).sync().channel();
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
             log.error("server error", e);
