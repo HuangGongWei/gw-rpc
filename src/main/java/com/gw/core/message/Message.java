@@ -13,16 +13,6 @@ import java.util.Map;
  */
 @Data
 public abstract class Message implements Serializable {
-
-    /**
-     * 根据消息类型字节，获得对应的消息 class
-     * @param messageType 消息类型字节
-     * @return 消息 class
-     */
-    public static Class<? extends Message> getMessageClass(int messageType) {
-        return messageClasses.get(messageType);
-    }
-
     /**
      * 序列Id
      */
@@ -39,6 +29,7 @@ public abstract class Message implements Serializable {
      * Rpc请求体 byte 值
      */
     public static final int RPC_MESSAGE_TYPE_REQUEST = 0;
+
     /**
      * Rpc响应体 byte 值
      */
@@ -49,5 +40,14 @@ public abstract class Message implements Serializable {
     static {
         messageClasses.put(RPC_MESSAGE_TYPE_REQUEST, RpcRequestMessage.class);
         messageClasses.put(RPC_MESSAGE_TYPE_RESPONSE, RpcResponseMessage.class);
+    }
+
+    /**
+     * 根据消息类型字节，获得对应的消息 class
+     * @param messageType 消息类型字节
+     * @return 消息 class
+     */
+    public static Class<? extends Message> getMessageClass(int messageType) {
+        return messageClasses.get(messageType);
     }
 }
