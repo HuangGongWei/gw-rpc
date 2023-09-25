@@ -28,15 +28,19 @@ public abstract class Message implements Serializable {
      */
     private int sequenceId;
 
+    /**
+     * 消息类型
+     */
     private int messageType;
 
     public abstract int getMessageType();
+
     /**
-     * 请求类型 byte 值
+     * Rpc请求体 byte 值
      */
     public static final int RPC_MESSAGE_TYPE_REQUEST = 0;
     /**
-     * 响应类型 byte 值
+     * Rpc响应体 byte 值
      */
     public static final int RPC_MESSAGE_TYPE_RESPONSE = 1;
 
