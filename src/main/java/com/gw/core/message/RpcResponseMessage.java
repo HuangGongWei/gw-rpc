@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * Description: Rpc详情体
+ * Description: Rpc响应体
  *
  * @author LinHuiBa-YanAn
  * @date 2023/8/7 20:43
