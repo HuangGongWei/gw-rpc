@@ -115,6 +115,9 @@ public interface Serializer {
         }
     }
 
+    /**
+     * 适配器
+     */
     class ClassCodec implements JsonSerializer<Class<?>>, JsonDeserializer<Class<?>> {
 
         @Override
