@@ -23,8 +23,35 @@ public class Config {
         }
     }
 
+
     /**
-     * 获取端口号
+     * 获取项目端口号
+     * @return 端口号
+     */
+    public static int getProjectPort() {
+        String value = properties.getProperty("project.port");
+        if(value == null) {
+            return 8080;
+        } else {
+            return Integer.parseInt(value);
+        }
+    }
+
+    /**
+     * 获取服务提供方ip
+     * @return 端口号
+     */
+    public static String getServerIp() {
+        String value = properties.getProperty("server.ip");
+        if(value == null) {
+            return "127.0.0.1";
+        } else {
+            return value;
+        }
+    }
+
+    /**
+     * 获取服务提供方端口号
      * @return 端口号
      */
     public static int getServerPort() {

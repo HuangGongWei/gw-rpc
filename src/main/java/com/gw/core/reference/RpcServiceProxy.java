@@ -1,5 +1,6 @@
 package com.gw.core.reference;
 
+import com.gw.core.config.Config;
 import com.gw.core.message.RpcRequestMessage;
 import com.gw.core.protocol.MessageCodecSharable;
 import com.gw.core.protocol.ProtocolFrameDecoder;
@@ -129,7 +130,7 @@ public class RpcServiceProxy {
                 }
             });
             try {
-                channel = bootstrap.connect("localhost", 8080).sync().channel();
+                channel = bootstrap.connect(Config.getServerIp(), Config.getProjectPort()).sync().channel();
                 channel.closeFuture().addListener(future -> group.shutdownGracefully());
             } catch (Exception e) {
                 log.error("client error", e);

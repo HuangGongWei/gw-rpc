@@ -42,7 +42,7 @@ public class RpcServer {
                     ch.pipeline().addLast(RPC_HANDLER);
                 }
             });
-            Channel channel = serverBootstrap.bind(Config.getServerPort()).sync().channel();
+            Channel channel = serverBootstrap.bind(Config.getProjectPort()).sync().channel();
             channel.closeFuture().sync();
         } catch (InterruptedException e) {
             log.error("server error", e);
