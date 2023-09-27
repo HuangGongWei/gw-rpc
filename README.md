@@ -25,7 +25,7 @@
 
 # 简易RPC框架的整体实现
 我们的 RPC 项目主要分为下面几个模块，结构非常清晰：
-![输入图片说明](https://img-blog.csdnimg.cn/c73ec4be5eef431087f57207c52e18ef.png)
+![输入图片说明](src/main/resources/imagesimage-20230920120306468.png)
 配套的源码源代码地址：[gw-rpc](https://gitee.com/hgw689/gw-rpc) 。 主要分为以下几个基本模块。
 
 `协议模块`：设计了通信请求体、响应体，序列化模式。
@@ -184,7 +184,7 @@
 ```
 
 对象的序列化和反序列化的需求在于：当我们收到数据的时候需要把二进制的 byte 数组转换为业务对象，这里就需要在 Netty 的 pipeline 中添加 inbound Handler，而对于发送数据则需要把业务对象转换为二进制的 byte 数据，也就是需要在 Netty 的 pipeline 中添加 outbound Handler。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b889fa5ced0d40debb28db3997dbb107.png)
+![输入图片说明](src/main/resources/imagesimage-20230925203229001.png)
 <br/>
 ## 服务工厂 🏭
 `ServicesFactory`是一个用于创建服务类实例的Java类。它根据在`application.properties`文件中定义的配置属性，将接口类与实现类进行映射，并提供了一个`getService`方法用于获取接口类对应的实例。在类加载时，它读取`application.properties`文件并将属性加载到`Properties`对象中。然后，它遍历属性名称，检查是否以"Service"结尾，并获取相应的接口类和实现类。通过使用反射创建实现类的实例，并将接口类和实例对象存储在`ConcurrentHashMap`中。通过调用`getService`方法并传入接口类，可以获取对应的实现类实例。该类的设计允许根据配置文件动态创建服务类实例，提供了一种灵活的方式来管理和获取服务实例。
@@ -553,9 +553,9 @@ public class RpcRequestMessageHandler extends SimpleChannelInboundHandler<RpcReq
 ## 撸了这么多，验收一下吧！
 首先启动服务提供方
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7437de81d7324e2a9af0c6817b90d8a9.png)
+![输入图片说明](src/main/resources/images/image-20230925203229001.png)
 以`com.gw.core.service.HelloService#sayHello` 方法为例
-![在这里插入图片描述](https://img-blog.csdnimg.cn/34e399cba836427f8d3cb2b711306b59.png)
+![输入图片说明](src/main/resources/images/image-20230926210407875.png)
 
 > 非常感谢您的阅读！项目中还有其他小设计，鼓励您深入研究和体验这些设计，以便更好地理解和掌握项目的细节。
 >
