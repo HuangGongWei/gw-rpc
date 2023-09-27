@@ -25,7 +25,7 @@
 
 # 简易RPC框架的整体实现
 我们的 RPC 项目主要分为下面几个模块，结构非常清晰：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c73ec4be5eef431087f57207c52e18ef.png)
+![输入图片说明](https://img-blog.csdnimg.cn/c73ec4be5eef431087f57207c52e18ef.png)
 配套的源码源代码地址：[gw-rpc](https://gitee.com/hgw689/gw-rpc) 。 主要分为以下几个基本模块。
 
 `协议模块`：设计了通信请求体、响应体，序列化模式。
